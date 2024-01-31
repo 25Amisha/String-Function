@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Functions Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rosybrown;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+        .input-container {
+            margin-bottom: 30px;
+        }
+        input, button {
+            margin: 5px;
+            padding: 8px; 
+            font-size: 14px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        input {
+            width: 300px;
+        }
+        button {
+            background-color: #4CAF50;
+            font-size: 25px;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #3e8e41;
+        }
+        .output-container {
+            margin-top: 30px;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>String Functions </h1>
+        <div class="input-container">
+            <label for="inputString" style="font-size: 30px; font:bold">Enter a string:</label>
+            <input type="text" id="inputString" style="font-size: 20px;" placeholder="Type a string...">
+        </div>
+        <div class="button-container">
+            <button onclick="showLength()">Length</button>
+            <button onclick="showCharAt()">Char At</button>
+            <button onclick="showSubstring()">Substring</button>
+            <button onclick="showLowerCase()">Lowercase</button>
+            <button onclick="showUpperCase()">Uppercase</button>
+            <button onclick="showIndexOf()">Index Of</button>
+            <button onclick="showReplace()">Replace</button>
+        </div>
+        <div class="output-container">
+            <p id="output"></p>
+        </div>
+    </div>
+    <script>
+        function getInputString() {
+            return document.getElementById('inputString').value;
+        }
+        
+        function showLength() {
+            const inputString = getInputString();
+            displayOutput(`Length: ${inputString.length}`);
+        }
+        
+        function showCharAt() {
+            const inputString = getInputString();
+            const index = prompt('Enter the index:');
+            if (index !== null) {
+                const char = inputString.charAt(parseInt(index, 10));
+                displayOutput(`Character at index ${index}: ${char}`);
+            }
+        }
+        function showSubstring() {
+            const inputString = getInputString();
+            const start = prompt('Enter the start index:');
+            const end = prompt('Enter the end index:');
+            if (start !== null && end !== null) {
+                const substring = inputString.substring(parseInt(start, 10), parseInt(end, 10));
+                displayOutput(`Substring: ${substring}`);
+            }
+        }
+        function showLowerCase() {
+            const inputString = getInputString();
+            displayOutput(`Lowercase: ${inputString.toLowerCase()}`);
+        }
+        function showUpperCase() {
+            const inputString = getInputString();
+            displayOutput(`Uppercase: ${inputString.toUpperCase()}`);
+        }
+        function showIndexOf() {
+            const inputString = getInputString();
+            const search = prompt('Enter the search string:');
+            if (search !== null) {
+                const index = inputString.indexOf(search);
+                displayOutput(`Index of ${search}: ${index}`);
+            }
+        }
+        function showReplace() {
+            const inputString = getInputString();
+            const search = prompt('Enter the string to replace:');
+            const replaceWith = prompt('Enter the replacement string:');
+            if (search !== null && replaceWith !== null) {
+                const replacedString = inputString.replace(search, replaceWith);
+                displayOutput(`After Replace: ${replacedString}`);
+            }
+        }
+        function displayOutput(output) {
+            document.getElementById('output').textContent = output;
+        }
+    </script>
+</body>
+</html>
